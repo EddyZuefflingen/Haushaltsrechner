@@ -33,6 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			echo form_submit('Login','Login');
 			echo form_submit('Register','Register','Register');
+			echo form_submit('Test','MarvinsButton');
 			echo form_close();
 		?>
 	</div>
