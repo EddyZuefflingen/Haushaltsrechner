@@ -31,6 +31,7 @@ class Login_Controller extends CI_Controller {
 
 	private function LoginValidation()
 	{
+		$test = $this->input->post("Test");
 		$username = $this->input->post("username");
 		$password = $this->input->post("password");
 		$encryptedPassword = openssl_encrypt($password,"AES-128-CBC","UltraSavePassword",0,"0244545367373570");
@@ -44,6 +45,9 @@ class Login_Controller extends CI_Controller {
 			{
 				echo "YEAH";
 			}
+		}
+		if (isset($test)){
+			$this->load->view('input_view');
 		}
 		else echo "Nope";
 	}
