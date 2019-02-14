@@ -16,6 +16,7 @@ class Login_Controller extends CI_Controller {
 
 	public function LoginRegisterSwitch()
 	{
+		$test = $this->input->post("Test");
 		$login = $this->input->post('Login');
 		$register = $this->input->post('Register');
 
@@ -27,11 +28,15 @@ class Login_Controller extends CI_Controller {
 		{
 			$this->Register();
 		}
+		if (isset($test))
+		{
+			$this->load->view('input_view');
+			
+		}
 	}
 
 	private function LoginValidation()
 	{
-		$test = $this->input->post("Test");
 		$username = $this->input->post("username");
 		$password = $this->input->post("password");
 		$encryptedPassword = openssl_encrypt($password,"AES-128-CBC","UltraSavePassword",0,"0244545367373570");
@@ -45,9 +50,6 @@ class Login_Controller extends CI_Controller {
 			{
 				echo "YEAH";
 			}
-		}
-		if (isset($test)){
-			$this->load->view('input_view');
 		}
 		else echo "Nope";
 	}
