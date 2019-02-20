@@ -26,7 +26,7 @@ class Login_Controller extends CI_Controller {
 		}
 		else if (isset($register))
 		{
-			$this->Register();
+			$this->load->view('register_view');
 		}
 		if (isset($test))
 		{
@@ -53,17 +53,4 @@ class Login_Controller extends CI_Controller {
 		}
 		else echo "Nope";
 	}
-
-	private function Register()
-	{
-		$username = $this->input->post("username");
-		$password = $this->input->post("password");
-		$encryptedPassword = openssl_encrypt($password,"AES-128-CBC","UltraSavePassword",0,"0244545367373570");
-
-		$this->load->model('Login_model');
-		$UserCreated = $this->Login_model->CreateUser($username, $encryptedPassword);
-		if ($UserCreated) echo "Benutzter erfolgreich erstellt";
-		else echo "Benutzter bereits vergeben";
-	}
-
 }

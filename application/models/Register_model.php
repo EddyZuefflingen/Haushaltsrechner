@@ -3,11 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 Class Register_model extends CI_Model
 {
-  public function CreateUser($Username, $Password)
+  public function CreateAccount($Username, $Password, $Email)
   {
-    $this->load->register_model();
+    $this->load->model("Login_model");
     $this->load->database();
-    $RowResult = 
+    $RowResult = $this->Login_model->GetUser($Username);
     $RowResult = $query->row();
     if (isset($RowResult->Username) & isset($RowResult->Password))
     {
@@ -15,7 +15,7 @@ Class Register_model extends CI_Model
     }
     else
     {
-      $query = $this->db->query("INSERT INTO users (Username,Password) VALUES ('".$Username."','".$Password."')");
+      $query = $this->db->query("INSERT INTO users (Username,Password,email) VALUES ('".$Username."','".$Password."','".$Email."')");
       return true;
     }
   }
