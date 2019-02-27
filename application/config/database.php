@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'project',
+	'hostname' => 'www.owl-sanctuary.de',
+	'username' => 'marvin',
+	'password' => 'pB3i1w4%',
+	'database' => 'marvin',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
