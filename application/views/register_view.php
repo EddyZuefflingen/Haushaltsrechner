@@ -11,20 +11,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$this->load->helper('form');
 			echo form_open('Register_Controller/Registration');
 			$UsernameFormSettings = array(
-							'name'        => 'username',
-							'id'          => 'username',
-							'maxlength'   => '100',
-							'size'        => '50',
-							'style'       => 'width:50%',
-						);
+				'name'        => 'username',
+				'id'          => 'username',
+				'maxlength'   => '100',
+				'size'        => '50',
+				'style'       => 'width:50%',
+			);
 
 			$PasswordFormSettings = array(
-							'name'        => 'password',
-							'id'          => 'password',
-							'maxlength'   => '100',
-							'size'        => '50',
-							'style'       => 'width:50%',
-						);
+				'name'        => 'password',
+				'id'          => 'password',
+				'maxlength'   => '100',
+				'size'        => '50',
+				'style'       => 'width:50%',
+			);
 
 			$EmailFormSettings = array(
 				'name'        => 'email',
