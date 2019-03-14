@@ -1,19 +1,20 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class LoginController extends CI_Controller
+class Login_Controller extends CI_Controller
 {
 
     public function index()
     {
-        $this->load->view("login_view");
         $this->load->helper('url');
+        $this->load->view("login_view");
     }
 
     public function Login()
     {
-        $this->load->view("login_view");
+        $this->load->helper('url');
         $this->load->helper("form");
+        $this->load->view("login_view");
     }
 
     public function LoginRegisterSwitch()
