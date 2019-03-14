@@ -67,7 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 <?php
 	$this->load->helper('form');
-	echo form_open('login_controller/LoginRegisterSwitch');
+	echo form_open('input_controller/ButtonSwitch');
 	
 
 	$choice = array(
@@ -84,22 +84,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	'style' => 'width:50%'
 	);
 	
-	$passwordData = array(
-	'name' => 'password',
-	'id' => 'password',
-	'value' => 'Akito',
-	'maxlength' => '100',
-	'size' => '50',
-	'style' => 'width:50%'
-	);
+	$kategorie = form_open('Input_model/loadCategories');
 	
 	echo form_dropdown('auswahl', $choice, 'ausgaben');
-	echo "Username: ".form_input($amount);
+	echo "Betrag: ".form_input($amount);
 	echo "<br><br>";
-	echo "Password: ".form_input($passwordData);
+	echo "Kategorie: ".form_dropdown('Kategorien',$kategorie);
 	echo "<br><br>";
-	echo form_submit("login","login");
-	echo form_submit("register","register");
+	echo form_submit("save","Eintrag Speichern!");
+	echo form_submit("show","Daten Anzeigen!");
+	echo form_submit("addKategorie","Kategorie Bearbeiten!");
 	// art des Buttons form_submit (Button ID/Name, Button Value);
 	?>
 </body>
