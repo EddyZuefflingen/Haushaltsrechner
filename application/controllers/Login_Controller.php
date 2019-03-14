@@ -19,17 +19,11 @@ class LoginController extends CI_Controller
     public function LoginRegisterSwitch()
     {
         if ($this->input->post("Login") !== null)
-        {
             $this->LoginValidation();
-        }
-        elseif ($this->input->post("Register") !== null)
-        {
+        else if ($this->input->post("Register") !== null)
             $this->load->view("register_view");
-        }
-        elseif ($this->input->post("Test") !== null)
-        {
+        else if ($this->input->post("Test") !== null)
             $this->load->view("input_view");
-        }
         // Workaround, wird später entfernt
     }
 
@@ -40,19 +34,11 @@ class LoginController extends CI_Controller
         if (null !== $sqlResult and openssl_decrypt($sqlResult->password, "AES-128-CBC", "UltraSavePassword", 0, "0244545367373570") == $this->input->post("password"))
         {
             if (0 == $sqlResult->verified)
-            {
                 exit("Account noch nicht freigeschaltet !");
-            }
             else
-            {
                 $this->load->view("input_view");
-            }
-
         }
         else
-        {
             exit("Username oder Password fehlerhaft !");
-        }
-
     }
 }
