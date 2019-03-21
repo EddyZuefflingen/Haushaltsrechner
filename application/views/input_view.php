@@ -8,6 +8,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 <?php
+	echo $_SESSION['userid'];
+	
 	$this->load->helper('form');
 	echo form_open('Input_Controller/ButtonSwitch');	
 

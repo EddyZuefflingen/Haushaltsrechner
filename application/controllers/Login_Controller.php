@@ -47,6 +47,8 @@ class Login_Controller extends CI_Controller
             if (0 == $sqlResult->verified)
                 exit("Account noch nicht freigeschaltet !");
             else
+                session_start();
+                $_SESSION['userid'] = $sqlResult->recnum;
                 $this->load->view("input_view",$this->GetInputControlValues());
         }
         else
