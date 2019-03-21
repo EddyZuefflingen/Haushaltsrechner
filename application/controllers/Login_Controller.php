@@ -26,11 +26,10 @@ class Login_Controller extends CI_Controller
         else if ($this->input->post("Test") !== null)
         {
             $this->load->model("Input_model");
-            $data = array()
-            {
-                array($this->Input_model->loadCategories())
-            }
+            $data = array(
+                "kategories" => $this->Input_model->loadCategories(),
 
+            );
 
             $this->load->view("input_view",$data);
         }
