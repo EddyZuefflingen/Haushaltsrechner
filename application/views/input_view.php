@@ -25,21 +25,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	'style' => 'width:50%'
 	);
 
-
-	//$this->load->model("Input_model");
-	//print($this->Input_Controller->lul());
-	echo "Kategorie: ".form_dropdown('Kategorien',$data["kategories"],'0');
-
-	// $this->load->model("Input_model");
-	// $this->Input_model->loadCategories();
-	//$kategorie = $this->Input_model->loadCategories();
-
-
-
 	echo form_dropdown('auswahl', $choice, 'ausgaben');
 	echo "Betrag: ".form_input($amount);
 	echo "<br><br>";
-	echo "Kategorie: ".form_dropdown('Kategorien',$kategorie,'','Test');
+	echo "Kategorie: ".form_dropdown('Kategorien',$kategories,'0');
 	echo "<br><br>";
 
 	echo form_submit("save","Eintrag Speichern!");

@@ -28,7 +28,7 @@ class Login_Controller extends CI_Controller
             $this->load->model("Input_model");
             $data = array(
                 "kategories" => $this->Input_model->loadCategories(),
-
+                //Hier neue Array Werte für die Input view zum füllen der Controls einfügen !
             );
 
             $this->load->view("input_view",$data);

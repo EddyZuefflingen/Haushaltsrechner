@@ -11,12 +11,11 @@ Class Input_model extends CI_Model
      else
      {
        $results=array();
-       $RowResult = mysql_fetch_row($query);
-       foreach($RowResult as $value)
+       foreach($query->result() as $value)
        {
-         array_push($a,$value);
+         array_push($results,$value->Kategorie);
        }
-     return $a;
+     return $results;
      }
   }
 }
