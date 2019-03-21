@@ -17,6 +17,16 @@ class Login_Controller extends CI_Controller
         $this->load->view("login_view");
     }
 
+    public function GetInputControlValues()
+    {
+        $this->load->model("Input_model");
+        $data = array(
+            "kategories" => $this->Input_model->loadCategories(),
+            //Hier neue Array Werte für die Input view zum füllen der Controls einfügen !
+        ); 
+        return $data;
+    }
+
     public function LoginRegisterSwitch()
     {
         if ($this->input->post("Login") !== null)
@@ -24,15 +34,7 @@ class Login_Controller extends CI_Controller
         else if ($this->input->post("Register") !== null)
             $this->load->view("register_view");
         else if ($this->input->post("Test") !== null)
-        {
-            $this->load->model("Input_model");
-            $data = array(
-                "kategories" => $this->Input_model->loadCategories(),
-                //Hier neue Array Werte für die Input view zum füllen der Controls einfügen !
-            );
-
-            $this->load->view("input_view",$data);
-        }
+            $this->load->view("input_view",$this->GetInputControlValues());
         // Workaround, wird später entfernt
     }
 
@@ -45,7 +47,7 @@ class Login_Controller extends CI_Controller
             if (0 == $sqlResult->verified)
                 exit("Account noch nicht freigeschaltet !");
             else
-                $this->load->view("input_view");
+                $this->load->view("input_view",$this->GetInputControlValues());
         }
         else
             exit("Username oder Password fehlerhaft !");
