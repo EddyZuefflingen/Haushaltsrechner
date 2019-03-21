@@ -24,11 +24,20 @@ class Login_Controller extends CI_Controller
         else if ($this->input->post("Register") !== null)
             $this->load->view("register_view");
         else if ($this->input->post("Test") !== null)
-            $this->load->view("input_view");
+        {
+            $this->load->model("Input_model");
+            $data = array()
+            {
+                array($this->Input_model->loadCategories())
+            }
+
+
+            $this->load->view("input_view",$data);
+        }
         // Workaround, wird später entfernt
     }
 
-    private function __LoginValidation()
+    private function LoginValidation()
     {
         $this->load->model("Login_model");
         $sqlResult = $this->Login_model->GetAccountData($this->input->post("username"));

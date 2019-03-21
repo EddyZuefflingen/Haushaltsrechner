@@ -5,8 +5,7 @@ class Input_Controller extends CI_Controller
 {
     public function index()
     {
-        
-        $this->load->view("input_view");       
+        $this->load->view("input_view"); 
     }
 
     public function ButtonSwitch()
@@ -26,6 +25,11 @@ class Input_Controller extends CI_Controller
             break;
             }
         }
+    }
+
+    public function lul()
+    {
+        return "lul";
     }
 }
 ?>
