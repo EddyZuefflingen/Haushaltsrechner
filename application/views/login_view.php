@@ -27,14 +27,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 );
 
                 $LoginFormSubmit = array(
-                    'name' => 'login',
-                    'id' => 'login',
+                    'name' => 'Login',
+                    'id' => 'Login',
                     'value' => "Login",
                 );
 
                 $RegisterFormSubmit = array(
-                    'name' => 'register',
-                    'id' => 'register',
+                    'name' => 'Register',
+                    'id' => 'Register',
                     'value' => "Register",
                 );
 
