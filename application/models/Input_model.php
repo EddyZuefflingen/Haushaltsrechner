@@ -16,7 +16,7 @@ Class Input_model extends CI_Model
          array_push($results,$value->Kategorie);
        }
      return $results;
-     }
+    }
   }
 }
 ?>
