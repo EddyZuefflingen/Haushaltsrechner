@@ -10,14 +10,13 @@ Class Input_model extends CI_Model
      if($query->row() == null) return;
      else
      {
-       $results=array();
-       $RowResult = mysql_fetch_row($query);
-       foreach($RowResult as $value)
-       {
-         array_push($a,$value);
-       }
-     return $a;
-     }
+      $RowResult = array();
+      foreach($query->row() as $value)
+      {
+        array_push($RowResult,$value);
+      }
+      return $RowResult;
+    }
   }
 }
 ?>
