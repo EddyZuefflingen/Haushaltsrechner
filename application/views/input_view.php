@@ -83,13 +83,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	'size' => '50',
 	'style' => 'width:50%'
 	);
-	
-	$kategorie = form_open('Input_model/loadCategories');
-	
+
+	//$this->load->model("Login_model");
+	$this->load->model("Input_model");
+	$kategorie = $this->Input_model->loadCategories();
+	/*$kategorie = array(
+		'Kategorien' => 'Keine angaben'
+	);
+	foreach($a as $value){
+		array_push($kategorie,$value);
+	} */
 	echo form_dropdown('auswahl', $choice, 'ausgaben');
 	echo "Betrag: ".form_input($amount);
 	echo "<br><br>";
-	echo "Kategorie: ".form_dropdown('Kategorien',$kategorie);
+	echo "Kategorie: ".form_dropdown('Kategorien',$kategorie,'','Test');
 	echo "<br><br>";
 	echo form_submit("save","Eintrag Speichern!");
 	echo form_submit("show","Daten Anzeigen!");

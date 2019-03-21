@@ -1,11 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-Class Login_model extends CI_Model
+Class Input_model extends CI_Model
 {
+
   public function loadCategories()
   {
-    $this->load->database();
+   $this->load->database();
     $query = $this->db->query("SELECT Kategorie FROM kategorie");
     if($query->row() == null)
     {
@@ -15,12 +16,13 @@ Class Login_model extends CI_Model
     {
       $a=array();
       $RowResult = mysql_fetch_row($query);
-      foreach($RowResult as &$value)
+      foreach($RowResult as $value)
       {
         array_push($a,$value);
       }
     return $a;
     }
   }
+
 }
 ?>
