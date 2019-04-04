@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	echo "<br><br>";
 	echo "Kategorie: ".form_dropdown('Kategorien',$kategories,'0');
     echo "<br><br>"; */
-    echo "Kategorie: ".form_dropdown('Kategorien',$kategories,'0');
+    echo "Kategorie: ".form_dropdown('kategories',$kategories);
     echo "<br><br>";
     echo "Neuer Name/Kategorie: ".form_input($KategorieName);
     echo "<br><br>";

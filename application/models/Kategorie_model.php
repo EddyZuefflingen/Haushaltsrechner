@@ -30,13 +30,13 @@ class Kategorie_model extends CI_Model
     public function CheckStandard($CatName)
     {
         $this->load->database();
-        $query = $this->db->query("SELECT * FROM kategorie WHERE Kategorie = '" . $CatName . "'");
-        $RowResult = $query->row();
-        return $RowResult;
+        $query = $this->db->query("SELECT * FROM kategorie WHERE Kategorie = '" . $CatName . "' AND standartWert = 1");
+        $result = $query->num_rows();
+        return $result;
     }
     public function RemoveConnection($CatName)
     {
         $this->load->database();
-        $query = $this->db->query("DELETE kk FROM KontoKat as kk INNER JOIN kategorie as k on kk.Kategorie_ID = k.Kategorie_ID WHERE Kategorie = '" . $CatName . "' AND Recnum_ID = 4");
+        $query = $this->db->query("DELETE kc FROM KontoCat as kc INNER JOIN kategorie as k on kk.Kategorie_ID = k.Kategorie_ID WHERE Kategorie = '" . $CatName . "' AND Recnum_ID = 4");
     }
 }
