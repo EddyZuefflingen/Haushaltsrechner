@@ -63,12 +63,10 @@ class Kategorie_Controller extends CI_Controller
     {
         $this->load->model("Kategorie_model");
         $sqlResult = $this->Kategorie_model->CheckStandard($this->input->post("kategories"));
-        echo "Bau".$this->input->post("kategories");
         if ($sqlResult >= 0)
         {
             if(0 == $sqlResult)
-                echo $sqlResult; 
-              //  $sqlRemove = $this->Kategorie_model->RemoveConnection($this->input->post("kategories"));
+              $sqlRemove = $this->Kategorie_model->RemoveConnection($this->input->post("kategories"));
             else
                 exit("Kategorie ist ein Standardwert!");
         }

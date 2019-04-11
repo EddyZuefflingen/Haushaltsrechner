@@ -28,7 +28,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     echo "<br><br>";
     echo form_submit("add","Kategorie Hinzufügen!");
 	echo form_submit("rename","Kategorie Umbenennen!");
-	echo form_submit("delete","Kategorie Löschen!");
+    echo form_submit("delete","Kategorie Löschen!");
+    echo "<br><br><br><br><br>";
+    echo "TODO: Neu zu ordnen von Ausgaben/einnahmen zu Keine Angaben wenn Kategorie gelöscht / Umbenannt wurde."
+    echo "<br>";
+    echo "TODO: Kategorie Umbennen"
 	// art des Buttons form_submit (Button ID/Name, Button Value);
 	?>
 </body>
