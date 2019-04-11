@@ -53,8 +53,8 @@ class Login_Controller extends CI_Controller
     private function LoginValidation()
     {
         $this->load->model("Login_model");
-        $sqlResult = $this->Login_model->GetAccountData($this->input->post("username"));
-        if (null !== $sqlResult and openssl_decrypt($sqlResult->password, "AES-128-CBC", "UltraSavePassword", 0, "0244545367373570") == $this->input->post("password"))
+        $sqlResult = $this->Login_model->GetAccountData($this->input->post("Username"));
+        if (null !== $sqlResult and openssl_decrypt($sqlResult->password, "AES-128-CBC", "UltraSavePassword", 0, "0244545367373570") == $this->input->post("Password"))
         {
             if (0 == $sqlResult->verified)
                 exit("Account noch nicht freigeschaltet !");
