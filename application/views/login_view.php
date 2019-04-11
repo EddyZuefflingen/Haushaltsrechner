@@ -2,57 +2,75 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/login_view.css">
+        <script type='text/javascript' src="<?php echo base_url(); ?>js/login_view.js"></script>
     </head>
     <body>
-        <div>
+        <div id = "LoginDiv">
             <?php
                 $this->load->helper('form');
                 echo form_open('Login_Controller/LoginRegisterSwitch');
 
-                //Control Settings
+                //Labels
+                $UsernameLabelSettings = array('class' => 'LabelControl');
+                $PasswordLabelSettings = array( 'class' => 'LabelControl');                
+
+                //Inputs
                 $UsernameFormSettings = array(
-                    'name' => 'username',
-                    'id' => 'username',
+                    'name' => 'Username',
+                    'id' => 'Username',
                     'maxlength' => '100',
+                    'class' => 'InputControl'
                 );
 
                 $PasswordFormSettings = array(
-                    'name' => 'password',
-                    'id' => 'password',
+                    'name' => 'Password',
+                    'id' => 'Password',
                     'maxlength' => '100',
+                    'class' => 'InputControl'
                 );
 
-                $LoginFormSubmit = array(
+                //Checkboxes
+                $KeepUsernameCheckboxSettings = array(
+                    'name' => 'KeepUsername',
+                    'id' => 'KeepUsername',
+                    'class' => 'CheckboxControl',
+                    'OnChange' => 'javascrip_t:KeepUsernameOnchange()'
+                );                
+
+                //Buttons
+                $LoginButtonSubmit = array(
                     'name' => 'Login',
                     'id' => 'Login',
                     'value' => "Login",
+                    'class' => 'BtnControl'
                 );
 
-                $RegisterFormSubmit = array(
+                $RegisterButtonSubmit = array(
                     'name' => 'Register',
                     'id' => 'Register',
                     'value' => "Register",
+                    'class' => 'BtnControl'
                 );
 
-                $InputFormSubmit = array(
+                $InputButtonSubmit = array(
                     'name' => 'Test',
                     'id' => 'input',
                     'value' => "Input",
+                    'class' => 'BtnControl'
                 );
 
-
-                echo "Username: " . form_input($UsernameFormSettings);
+                echo form_label("Username: ", "UsernameLabel", $UsernameLabelSettings).form_input($UsernameFormSettings);
                 echo "<br><br>";
-                echo "Password: " . form_password($PasswordFormSettings);
+                 echo form_label("Password: ", "PasswordLabel", $PasswordLabelSettings).form_password($PasswordFormSettings);
                 echo "<br><br>";
 
-                echo form_submit($LoginFormSubmit);
-                echo form_submit($RegisterFormSubmit);
-                echo form_submit($InputFormSubmit);
+                echo form_checkbox($KeepUsernameCheckboxSettings).form_label("Username merken ?", "KeepUsernameLabel");
+                echo form_submit($LoginButtonSubmit);
+                echo form_submit($RegisterButtonSubmit);
+                echo form_submit($InputButtonSubmit);
                 echo form_close();
             ?>
         </div>

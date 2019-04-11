@@ -30,7 +30,19 @@ class Login_Controller extends CI_Controller
     public function LoginRegisterSwitch()
     {
         if ($this->input->post("Login") !== null)
+        {
+            $this->load->helper('cookie');
+            if ($this->input->post("KeepUsername") !== null)
+            {
+                setcookie("KeepUsername",$this->input->post("Username"), time()+60*60*24*30,"/","localhost",false,false);
+                //  time()+60*60*24*30 = 30 Tage
+            }
+            else
+            {
+                delete_cookie("KeepUsername");
+            }
             $this->LoginValidation();
+        }
         else if ($this->input->post("Register") !== null)
             $this->load->view("register_view");
         else if ($this->input->post("Test") !== null)

@@ -1,4 +1,62 @@
+/* https://codepen.io/marcobiedermann/pen/Fybpf */
+
 body 
 {
-    background-color: lightgray;
+    background-color: #353a42;
 }
+
+#LoginDiv
+{
+    width: 35% ;
+    height: 40%;
+    position: absolute;
+    top: 20%;
+    left: 35%;
+    text-align: center;
+    background-color: white;
+    border-style: initial;
+    border-radius: 20px;
+}
+
+#KeepUsername
+{
+}
+
+.InputControl
+{
+    height: 27px;
+    width: 300px;
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.BtnControl
+{
+    height: 35px;
+    width: 200px;
+
+    font-size: 30px;
+    text-align: center; 
+
+    float: right;
+    clear:right;
+
+    margin-right: 100px;
+    margin-top: 3px;
+}
+
+.LabelControl
+{
+    font-size: 17px;
+}
+
+.CheckboxControl
+{
+    float: right;
+    clear:right;
+}
+
+
