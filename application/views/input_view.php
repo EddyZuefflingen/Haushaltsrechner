@@ -35,7 +35,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	echo form_submit("save","Eintrag Speichern!");
 	echo form_submit("show","Daten Anzeigen!");
-	echo form_submit("addKategorie","Kategorie Bearbeiten!");
+	echo "<br><br><br><br>";
+	echo form_submit("KategorieDetails","Kategorie Bearbeiten!");
 	// art des Buttons form_submit (Button ID/Name, Button Value);
 	?>
 </body>
