@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             echo $sparziel . "<br>";
             echo $betrag . "<br>";
         ?>
-        <a href="<?php echo base_url(); ?>/index.php/Sparziel_Controller">Zurück</a>
+        <a href="<?php echo base_url(); ?>index.php/Sparziel_Controller">Zurück</a>
 	</div>
 </body>
 </html>
