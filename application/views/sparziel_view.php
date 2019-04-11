@@ -38,7 +38,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			echo '<br><br>';
 
 			if(!empty($sparziele)) {
-				echo 'Sparziel Tabelle';
 				$sparziele = json_decode(json_encode($sparziele), true);
 				$this->table->set_heading('Sparziel', 'Stand', 'Ziel');
 				foreach ($sparziele as $key => $value) {
