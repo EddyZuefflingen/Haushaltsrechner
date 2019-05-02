@@ -7,6 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<title>Welcome to CodeIgniter</title>
 </head>
 <body>
+<div id="container">
 <?php
 	$this->load->helper('form');
     echo form_open('Kategorie_Controller/ButtonSwitch');	
@@ -30,5 +31,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     echo "TODO: Kategorie Umbennen";
 	// art des Buttons form_submit (Button ID/Name, Button Value);
 	?>
+    </div>
 </body>
 </html>
