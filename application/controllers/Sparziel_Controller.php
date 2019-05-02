@@ -4,12 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Sparziel_Controller extends CI_Controller {
 
 	public function index() {
+		session_start();
 		$this->load->model('Sparziel_model');
 
 		$arrSparziele = $this->Sparziel_model->getSparziele();
 
 		$data = array(
-			'sparziele'			=> $arrSparziele
+			'sparziele' => $arrSparziele
 		);
 
 		$this->load->library('table');
