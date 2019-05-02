@@ -17,11 +17,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         'maxlength' => '100',
     );
     
-	/*echo form_dropdown('auswahl', $choice, 'ausgaben');
-	echo "Betrag: ".form_input($amount);
-	echo "<br><br>";
-	echo "Kategorie: ".form_dropdown('Kategorien',$kategories,'0');
-    echo "<br><br>"; */
+    echo isset($_SESSION['userid']) ? $_SESSION['userid'] : '';
+    
     echo "Kategorie: ".form_dropdown('kategories',$kategories);
     echo "<br><br>";
     echo "Neuer Name/Kategorie: ".form_input($KategorieName);
