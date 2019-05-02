@@ -55,13 +55,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     'class' => 'BtnControl'
                 );
 
-                $InputButtonSubmit = array(
-                    'name' => 'Test',
-                    'id' => 'input',
-                    'value' => "Input",
-                    'class' => 'BtnControl'
-                );
-
                 echo form_label("Username: ", "UsernameLabel", $UsernameLabelSettings).form_input($UsernameFormSettings);
                 echo "<br><br>";
                  echo form_label("Password: ", "PasswordLabel", $PasswordLabelSettings).form_password($PasswordFormSettings);
@@ -70,7 +63,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 echo form_checkbox($KeepUsernameCheckboxSettings).form_label("Username merken ?", "KeepUsernameLabel");
                 echo form_submit($LoginButtonSubmit);
                 echo form_submit($RegisterButtonSubmit);
-                echo form_submit($InputButtonSubmit);
                 echo form_close();
             ?>
         </div>

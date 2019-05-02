@@ -33,21 +33,17 @@ class Login_Controller extends CI_Controller
         {
             $this->load->helper('cookie');
             if ($this->input->post("KeepUsername") !== null)
-            {
-                setcookie("KeepUsername",$this->input->post("Username"), time()+60*60*24*30,"/","localhost",false,false);
-                //  time()+60*60*24*30 = 30 Tage
-            }
+                setcookie("KeepUsername",$this->input->post("Username"), time()+60*60*24*30,"/","localhost",false,false); //  time()+60*60*24*30 = 30 Tage
             else
-            {
                 delete_cookie("KeepUsername");
-            }
+
             $this->LoginValidation();
         }
         else if ($this->input->post("Register") !== null)
+        {
+            $this->load->helper('url');
             $this->load->view("register_view");
-        else if ($this->input->post("Test") !== null)
-            $this->load->view("input_view",$this->GetInputControlValues());
-        // Workaround, wird später entfernt
+        }
     }
 
     private function LoginValidation()
@@ -61,6 +57,7 @@ class Login_Controller extends CI_Controller
             else
                 session_start();
                 $_SESSION['userid'] = $sqlResult->recnum;
+                $this->load->helper('url');
                 $this->load->view("input_view",$this->GetInputControlValues());
         }
         else

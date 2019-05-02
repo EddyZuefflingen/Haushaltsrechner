@@ -37,3 +37,8 @@ function KeepUsernameOnchange()
         document.cookie = "KeepUsername=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
     }
 }
+
+function wrongUsernamePasswordPrompt()
+{
+    prompt("Falscher Username oder Password !");
+}
