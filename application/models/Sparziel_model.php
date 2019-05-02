@@ -3,14 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 Class Sparziel_model extends CI_Model
 {
-    public function neuesSparzielAnlegen($sparziel, $betrag) {
+    public function neuesSparzielAnlegen($sparziel, $betrag, $userid) {
         $this->load->database();
-        $query = $this->db->query("INSERT INTO sparziele (user_id,name,stand,ziel) VALUES (1,'".$sparziel."', 0, ".$betrag.")");
+        $query = $this->db->query("INSERT INTO sparziele (user_id,name,stand,ziel) VALUES (" . $userid . ",'".$sparziel."', 0, ".$betrag.")");
     }
 
-    public function getSparziele() {
+    public function getSparziele($userid) {
         $this->load->database();
-        $query = $this->db->query("SELECT * FROM sparziele WHERE user_id = 1");
+        $query = $this->db->query("SELECT * FROM sparziele WHERE user_id = " . $userid);
         return $query->result();
     }
 }

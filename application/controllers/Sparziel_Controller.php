@@ -7,7 +7,7 @@ class Sparziel_Controller extends CI_Controller {
 		session_start();
 		$this->load->model('Sparziel_model');
 
-		$arrSparziele = $this->Sparziel_model->getSparziele();
+		$arrSparziele = $this->Sparziel_model->getSparziele($_SESSION['userid']);
 
 		$data = array(
 			'sparziele' => $arrSparziele
@@ -19,12 +19,13 @@ class Sparziel_Controller extends CI_Controller {
 	}
 
 	public function anlegen() {
+		session_start();
 		$this->load->model('Sparziel_model');
 		$error = null;
 		$sparziel = isset($_POST['sparziel_name']) ? $_POST['sparziel_name'] : null;
 		$betrag   = isset($_POST['sparziel_betrag']) ? $_POST['sparziel_betrag'] : null;
 
-		$error = $this->Sparziel_model->neuesSparzielAnlegen($sparziel, $betrag);
+		$error = $this->Sparziel_model->neuesSparzielAnlegen($sparziel, $betrag, $_SESSION['userid']);
 		
 		$data = array(
 			'fehler' 			=> $error,
