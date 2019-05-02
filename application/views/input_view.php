@@ -4,9 +4,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
+	<title>Inputting</title>
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/input_view.css">
 </head>
 <body>
+<div id="container">
 <?php
 	echo isset($_SESSION['userid']) ? $_SESSION['userid'] : '';
 
@@ -39,5 +41,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	echo form_submit("KategorieDetails","Kategorie Bearbeiten!");
 	// art des Buttons form_submit (Button ID/Name, Button Value);
 	?>
+	</div>
 </body>
 </html>

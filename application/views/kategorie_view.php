@@ -4,9 +4,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
+	<title>Kategorien</title>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/kategorie_view.css">
 </head>
 <body>
+<div id="container">
 <?php
 	$this->load->helper('form');
     echo form_open('Kategorie_Controller/ButtonSwitch');	
@@ -30,5 +32,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     echo "TODO: Kategorie Umbennen";
 	// art des Buttons form_submit (Button ID/Name, Button Value);
 	?>
+    </div>
 </body>
 </html>

@@ -31,6 +31,7 @@ class Input_Controller extends CI_Controller
 
         if ($this->input->post("KategorieDetails") !== null){
             session_start();
+            $this->load->helper('url');
             $this->load->view("kategorie_view",$this->GetCategories());
         }
 
