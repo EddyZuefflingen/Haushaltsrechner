@@ -10,6 +10,7 @@ class Kategorie_Controller extends CI_Controller
 
     public function ButtonSwitch()
 	{
+        session_start();
         if ($this->input->post("add") !== null){
             $this->AddCategorie();
         }
@@ -34,11 +35,24 @@ class Kategorie_Controller extends CI_Controller
             {
                 $sqlInsert = $this->Kategorie_model->AddKategorie($this->input->post("KategorieName"));
                 $sqlID = $this->Kategorie_model->getKategorieID($this->input->post("KategorieName"));
-                $sqlAdd = $this->Kategorie_model->AddConnection($sqlID);
+                $sqlAdd = $this->Kategorie_model->AddConnection($sqlID,$_SESSION['userid']);
                 exit("Kategorie erfolgreich hinzugefügt.");
             }
             else
-                exit("Die Kategorie ist bereits vorhanden...");
+            {
+                $sqlID = $this->Kategorie_model->getKategorieID($this->input->post("KategorieName"));
+                $sqlCatConnection = $this->Kategorie_model->CheckConnection($sqlID,$_SESSION['userid']);
+                if(0 == $sqlCatConnection)
+                {
+                    $sqlAdd = $this->Kategorie_model->AddConnection($sqlID,$_SESSION['userid']);
+                    exit("Kategorie erfolgreich hinzugefügt.");
+                }
+                else
+                {
+                    exit("Die Kategorie ist bereits vorhanden...");
+                }
+            }
+                
         }
         else
             exit("Ein unerwarteter Fehler ist beim Hinzufügen aufgetreten!");
@@ -66,7 +80,7 @@ class Kategorie_Controller extends CI_Controller
         if ($sqlResult >= 0)
         {
             if(0 == $sqlResult)
-              $sqlRemove = $this->Kategorie_model->RemoveConnection($this->input->post("kategories"));
+              $sqlRemove = $this->Kategorie_model->RemoveConnection($this->input->post("kategories"),$_SESSION['userid']);
             else
                 exit("Kategorie ist ein Standardwert!");
         }
