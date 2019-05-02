@@ -22,21 +22,29 @@ class Kategorie_model extends CI_Model
         $result = $query->row("kategorie_ID");
         return $result;
     }
-    public function addConnection($KategorieID)
+    public function addConnection($KategorieID,$RecnumID)
     {
         $this->load->database();
-        $query = $this->db->query("INSERT INTO kontoCat(Recnum_ID,kategorie_ID) Values(4,'" . $KategorieID . "')");  
+        $query = $this->db->query("INSERT INTO kontoCat(Recnum_ID,kategorie_ID) Values('" . $RecnumID ."','" . $KategorieID . "')");  
     }
-    public function CheckStandard($CatName)
+    public function CheckStandard($CatID)
     {
         $this->load->database();
-        $query = $this->db->query("SELECT * FROM kategorie WHERE kategorie_ID = '" . $CatName . "' AND standartWert = 1");
+        $query = $this->db->query("SELECT * FROM kategorie WHERE kategorie_ID = '" . $CatID . "' AND standartWert = 1");
         $result = $query->num_rows();
         return $result;
     }
-    public function RemoveConnection($CatName)
+    public function CheckConnection($CatID,$RecnumID)
     {
         $this->load->database();
-        $query = $this->db->query("DELETE kc FROM KontoCat as kc WHERE kategorie_ID = '" . $CatName . "' AND Recnum_ID = 4");
+        $query = $this->db->query("SELECT * FROM kontoCat where kategorie_ID = '" . $CatID . "' AND Recnum_ID = '" . $RecnumID ."'");
+        $result = $query->num_rows();
+        return $result;
+    }
+    public function RemoveConnection($CatID,$RecnumID)
+    {
+        session_start();
+        $this->load->database();
+        $query = $this->db->query("DELETE * FROM KontoCat WHERE kategorie_ID = '" . $CatID . "' AND Recnum_ID = '" . $RecnumID ."'");
     }
 }
