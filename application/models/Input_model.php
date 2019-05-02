@@ -19,5 +19,15 @@ Class Input_model extends CI_Model
      return $results;
     }
   }
+  public function doNegativeTransaction($categorie, $amount, $sign,$date)
+  {
+    $this->load->database();
+    $query = $this->db->query("INSERT INTO transactions(Recnum_ID,Menge,kategorie_ID,Datum) Values(4,'" . $sign . "" . $amount . "','" . $categorie . "','" . $date . "')");
+  }
+  public function doPositiveTransaction($categorie, $amount,$date)
+  {
+    $this->load->database();
+    $query = $this->db->query("INSERT INTO transactions(Recnum_ID,Menge,kategorie_ID,Datum) Values(4,'" . $amount . "','" . $categorie . "','" . $date . "')");
+  }
 }
 ?>
