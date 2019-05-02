@@ -6,6 +6,7 @@ class Kategorie_Controller extends CI_Controller
     public function index()
     {
         $this->load->view("kategorie_view"); 
+        
     }
 
     public function ButtonSwitch()
