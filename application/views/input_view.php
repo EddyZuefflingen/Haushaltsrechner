@@ -19,8 +19,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	);
 
 	$amount = array(
-	'name' => 'username',
-	'id' => 'username',
+	'name' => 'amount',
+	'id' => 'amount',
 	'value' => '200',
 	'maxlength' => '100',
 	'size' => '50',
@@ -30,7 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	echo form_dropdown('auswahl', $choice, 'ausgaben');
 	echo "Betrag: ".form_input($amount);
 	echo "<br><br>";
-	echo "Kategorie: ".form_dropdown('Kategorien',$kategories,'0');
+	echo "Kategorie: ".form_dropdown('kategories',$kategories,'0');
 	echo "<br><br>";
 
 	echo form_submit("save","Eintrag Speichern!");
