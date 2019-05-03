@@ -1,11 +1,11 @@
-window.onload = function () 
+window.onload  = function () 
 {
     var CookieValue = getCookie("KeepUsername");
     if (CookieValue != "")
     {
         document.getElementById("Username").value = getCookie("KeepUsername");
         document.getElementById("KeepUsername").checked = true;
-    }
+    } 
 }
 
 function getCookie(cname) 
@@ -29,16 +29,12 @@ function getCookie(cname)
 function KeepUsernameOnchange()
 {
     if (document.getElementById("KeepUsername").checked)
-    {
         document.cookie = "KeepUsername = " + document.getElementById("Username").value;
-    }
     else
-    {
         document.cookie = "KeepUsername=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-    }
 }
 
-function wrongUsernamePasswordPrompt()
+function test()
 {
-    prompt("Falscher Username oder Password !");
+    window.alert("");
 }

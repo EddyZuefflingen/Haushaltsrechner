@@ -61,6 +61,11 @@ class Login_Controller extends CI_Controller
                 $this->load->view("input_view",$this->GetInputControlValues());
         }
         else
-            exit("Username oder Password fehlerhaft !");
+        {
+            echo '<script type="text/javascript"> window.alert("Username oder Password fehlerhaft!") </script>';
+
+            $this->load->helper('url');
+            $this->load->view("login_view");
+        }
     }
 }
