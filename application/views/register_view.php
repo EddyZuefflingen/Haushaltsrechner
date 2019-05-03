@@ -9,6 +9,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<body>
 		<div id="container">
 			<?php
+				$oldUsername = "";
+				 if (isset($username))
+					$oldUsername = $username;
+
+					$oldEmail = "";
+					if (isset($mail))
+					   $oldEmail = $mail;
+
 				$this->load->helper('form');
 				echo form_open('Register_Controller/Registration');
 				$UsernameFormSettings = array(
@@ -17,6 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					'maxlength'   => '100',
 					'size'        => '50',
 					'style'       => 'width:50%',
+					'value'       => $oldUsername,
 				);
 
 				$PasswordFormSettings = array(
@@ -33,6 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					'maxlength'   => '100',
 					'size'        => '50',
 					'style'       => 'width:50%',
+					'value'       => $oldEmail,
 				);						
 
 				echo "Username: ".form_input($UsernameFormSettings);
