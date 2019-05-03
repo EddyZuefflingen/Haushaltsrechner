@@ -36,4 +36,9 @@ class Sparziel_Controller extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->view('sparziel_details', $data);
 	}
+
+	public function hinzufuegen() {
+		$this->load->model('Sparziel_model');
+		$this->Sparziel_model->sparzielBearbeiten($_POST['sparzielId'], $_POST['betrag']);
+	}
 }

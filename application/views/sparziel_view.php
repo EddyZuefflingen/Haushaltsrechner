@@ -45,7 +45,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				foreach ($sparziele as $key => $value) {
 					$this->table->add_row($value['name'], $value['stand'], $value['ziel'],
 					form_button('add' . $value['sparziel_id'], '+', 
-					[	'class' 	=> 'add',
+					[	'id'		=> 'add'.$value['sparziel_id'],
+						'class' 	=> 'add',
 						'onclick' 	=> 'betragHinzufuegen('.$value['sparziel_id'].')',
 						'title'		=> 'Betrag hinzufügen'
 					]));
@@ -60,10 +61,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				var betrag = prompt("Betrag eingeben:", 0);
 				if(betrag != null) {
 					betrag = parseFloat(betrag);
-					if(isNaN(betrag)) {
-						console.log('Keine Nummer');
-					} else {
-						console.log(betrag);
+					var field = document.getElementById('add' + sparzielId).parentElement.parentElement.children[1];
+					var value = parseFloat(field.innerHTML);
+					betrag += value;
+					if(!isNaN(betrag)) {
+						var xhr = new XMLHttpRequest();
+						xhr.open('POST', '<?php echo base_url(); ?>index.php/Sparziel_Controller/hinzufuegen');
+						xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+						xhr.onload = function() {
+							if (xhr.status === 200) {
+								field.innerHTML = betrag.toFixed(2);
+							}
+							else {
+								alert(xhr.status);
+							}
+						};
+						xhr.send(encodeURI('sparzielId=' + sparzielId + '&betrag=' + betrag));
 					}
 				}
 			}

@@ -13,4 +13,9 @@ Class Sparziel_model extends CI_Model
         $query = $this->db->query("SELECT * FROM sparziele WHERE user_id = " . $userid);
         return $query->result();
     }
+
+    public function sparzielBearbeiten($sparzielId, $betrag) {
+        $this->load->database();
+        $query = $this->db->query("UPDATE sparziele SET stand = " . $betrag . " WHERE sparziel_id = " . $sparzielId);
+    }
 }

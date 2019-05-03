@@ -47,7 +47,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     'id' => 'Login',
                     'value' => "Login",
                     'class' => 'BtnControl',
-                    'onclick' => 'test()'
                 );
 
                 $RegisterButtonSubmit = array(
@@ -69,26 +68,5 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 echo form_close();
             ?>
         </div>
-        <script>
-
-            // function test() {
-            //     event.preventDefault();
-
-            //     var xhr = new XMLHttpRequest();
-            //     xhr.open('POST', '<?php //echo base_url(); ?>index.php/Login_Controller/test');
-            //     xhr.onload = function() {
-            //         if (xhr.status === 200) {
-            //             alert('User\'s name is ' + xhr.responseText);
-            //         }
-            //         else {
-            //             alert('Request failed.  Returned status of ' + xhr.status);
-            //         }
-            //     };
-            //     xhr.send();
-
-            //     console.log(1);
-            // }
-        
-        </script>
     </body>
 </html>
