@@ -1,4 +1,10 @@
+@font-face {
+    font-family: 'Lato';
+    src: url('Lato-Regular.ttf') format('truetype');
+} 
+
 body {
+    font-family: Lato;
     background-color: #353a42;
 }
 

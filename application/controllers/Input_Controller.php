@@ -5,7 +5,14 @@ class Input_Controller extends CI_Controller
 {
     public function index()
     {
-        $this->load->view("input_view"); 
+        $this->load->model("Input_model");
+        session_start();
+        $data = array(
+            "kategories" => $this->Input_model->loadCategories()
+            //Kategorien für die Kategorie Bearbeitung laden.
+        ); 
+        $this->load->helper('url');
+        $this->load->view("input_view", $data); 
     }
 
     public function GetCategories()
@@ -20,18 +27,22 @@ class Input_Controller extends CI_Controller
 
     public function ButtonSwitch()
 	{
-
+        $this->load->model("Input_model");
+        session_start();
+        $data = array(
+            "kategories" => $this->Input_model->loadCategories()
+            //Kategorien für die Kategorie Bearbeitung laden.
+        ); 
+        $this->load->helper('url');
         if ($this->input->post("save") !== null){
             $this->TransactionInput();
         }
 
         if ($this->input->post("show") !== null){
-            $this->load->view("input_view");
+            $this->load->view("input_view", $data);
         }
 
         if ($this->input->post("KategorieDetails") !== null){
-            session_start();
-            $this->load->helper('url');
             $this->load->view("kategorie_view",$this->GetCategories());
         }
 

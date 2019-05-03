@@ -8,6 +8,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/kategorie_view.css">
 </head>
 <body>
+<div id="menu">
+	<a href="<?php echo base_url(); ?>index.php/Input_Controller">Input</a>
+	<a href="<?php echo base_url(); ?>index.php/Sparziel_Controller">Sparziel</a>
+	<a href="<?php echo base_url(); ?>index.php/Logout_Controller">Logout</a>
+</div>
 <div id="container">
 <?php
 	$this->load->helper('form');

@@ -68,4 +68,8 @@ class Login_Controller extends CI_Controller
             $this->load->view("login_view");
         }
     }
+
+    public function test() {
+        echo "test";
+    }
 }
