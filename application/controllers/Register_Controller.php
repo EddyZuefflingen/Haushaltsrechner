@@ -17,14 +17,44 @@ class Register_Controller extends CI_Controller {
 	public function Registration()
 	{
 		$this->load->model('Login_model');
-		if ($this->input->post("username") == null OR $this->input->post("password") == null OR $this->input->post("email") == null) exit("Bitte alle Felder ausfüllen !");
-		else if ($this->Login_model->CheckIfUsernameExists($this->input->post("username"))) exit("Username bereits vergeben !");
-		else if ($this->Login_model->CheckIfEmailExists($this->input->post("email"))) exit("Email bereits vergeben !");
-		else if (!$this->CheckIfEmailIsValid($this->input->post("email"))) exit("Email ist ungültig !");
+		if ($this->input->post("username") == null OR $this->input->post("password") == null OR $this->input->post("email") == null) 
+		{
+			$this->sendError("Bitte alle Felder ausfüllen!");
+			return;
+		}
+		else if ($this->Login_model->CheckIfUsernameExists($this->input->post("username"))) 
+		{
+			$this->sendError("Username bereits vergeben!");
+			return;
+		}
+		else if ($this->Login_model->CheckIfEmailExists($this->input->post("email"))) 
+		{
+			$this->sendError("Email bereits vergeben!");
+			return;
+		}
 
-		$hash = md5( rand(0,1000) ); // Generate random 32 character hash and assign it to a local variable.
-		$this->CreateAccount($this->input->post("username"), $this->input->post("password"), $this->input->post("email"), $hash);
-		$this->SendEmailVerification($this->input->post("email"), $hash);
+		else if (!$this->CheckIfEmailIsValid($this->input->post("email"))) 
+		{
+			$this->sendError("Email ist ungültig!");
+			return;
+		}
+
+		 $hash = md5(rand(0,1000)); // Generate random 32 character hash and assign it to a local variable.
+		 $this->CreateAccount($this->input->post("username"), $this->input->post("password"), $this->input->post("email"), $hash);
+		 $this->SendEmailVerification($this->input->post("email"), $hash);
+	}
+
+	public function sendError($message)
+	{
+		echo '<script type="text/javascript"> window.alert("'.$message.'") </script>';
+
+        $data = array(
+			"username" => $this->input->post("username"),
+			"mail" => $this->input->post("email"),
+        ); 
+
+		$this->load->helper('url');
+		$this->load->view("register_view", $data);
 	}
 
 	private function CreateAccount($username, $password, $email, $hash)
