@@ -8,7 +8,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <script type='text/javascript' src="<?php echo base_url(); ?>js/login_view.js"></script>
     </head>
     <body>
-        <div id = "LoginDiv">
+        <div id="container">
+            <h1>Login</h1>
             <?php
                 $this->load->helper('form');
                 echo form_open('Login_Controller/LoginRegisterSwitch');
@@ -55,12 +56,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     'class' => 'BtnControl'
                 );
 
-                echo form_label("Username: ", "UsernameLabel", $UsernameLabelSettings).form_input($UsernameFormSettings);
+                echo form_label("Username: ", "Username", $UsernameLabelSettings).form_input($UsernameFormSettings);
                 echo "<br><br>";
-                 echo form_label("Password: ", "PasswordLabel", $PasswordLabelSettings).form_password($PasswordFormSettings);
+                echo form_label("Password: ", "Password", $PasswordLabelSettings).form_password($PasswordFormSettings);
                 echo "<br><br>";
 
-                echo form_checkbox($KeepUsernameCheckboxSettings).form_label("Username merken ?", "KeepUsernameLabel");
+                echo form_checkbox($KeepUsernameCheckboxSettings).form_label("Username merken ?", "KeepUsername");
+                echo "<br><br>";
                 echo form_submit($LoginButtonSubmit);
                 echo form_submit($RegisterButtonSubmit);
                 echo form_close();

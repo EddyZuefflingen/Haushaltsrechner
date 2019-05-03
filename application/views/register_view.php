@@ -8,6 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</head>
 	<body>
 		<div id="container">
+            <h1>Register</h1>
 			<?php
 				$this->load->helper('form');
 				echo form_open('Register_Controller/Registration');
@@ -16,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					'id'          => 'username',
 					'maxlength'   => '100',
 					'size'        => '50',
-					'style'       => 'width:50%',
+                    'class' => 'InputControl'
 				);
 
 				$PasswordFormSettings = array(
@@ -24,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					'id'          => 'password',
 					'maxlength'   => '100',
 					'size'        => '50',
-					'style'       => 'width:50%',
+                    'class' => 'InputControl'
 				);
 
 				$EmailFormSettings = array(
@@ -32,7 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					'id'          => 'email',
 					'maxlength'   => '100',
 					'size'        => '50',
-					'style'       => 'width:50%',
+                    'class' => 'InputControl'
 				);						
 
 				echo "Username: ".form_input($UsernameFormSettings);
@@ -42,7 +43,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				echo "Email: ".form_input($EmailFormSettings);
 				echo "<br><br>";			
 
-				echo form_submit('Register','Register','Register');
+				echo form_button('Login','Login', array('onclick' => 'location.href=\'' . base_url() . 'index.php/Login_Controller\';', 'class' => 'BtnControl'));
+				echo form_submit('Register', 'Register', array('class' => 'BtnControl'));
 				echo form_close();
 			?>
 		</div>

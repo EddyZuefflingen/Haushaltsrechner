@@ -9,9 +9,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 	<div id="menu">
-		<a href="<?php echo base_url(); ?>index.php/Login_Controller">Input</a>
-		<a class="aktiv">Sparziel</a>
-		<a >Logout</a>
+		<a href="<?php echo base_url(); ?>index.php/Login_Controller/LoginRegisterSwitch">Input</a>
+		<a href="<?php echo base_url(); ?>index.php/Sparziel_Controller">Sparziel</a>
+		<a href="<?php echo base_url(); ?>index.php/Logout_Controller">Logout</a>
 	</div>
 	<div id="container">
 		<?php 
