@@ -60,18 +60,11 @@ class Kategorie_Controller extends CI_Controller
     }
     private function RenameCategorie()
     {
+        $this->load->model("Kategorie_model");
+        $this->AddCategorie();
         {
-            /*$this->load->model("Kategorie_model");
-            $sqlResult = $this->Kategorie_model->CheckAvailability($this->input->post("KategorieName"));
-            if (null !== $sqlResult)
-            {
-                if(0 == $sqlResult)
-                    $sqlRemove = $this->Kategorie_model->RemoveConnection($this->input_post("kategories"));
-                else
-                    exit("Kategorie ist ein Standardwert!");
-            }
-            else */
-                exit("Will be Implemented Later");
+            $sqlID = $this->Kategorie_model->getKategorieID($this->input->post("KategorieName"));
+            $sqlChange = $this->Kategorie_model->ChangeTransactions($this->input->post("kategories"),$sqlID,$_SESSION['userid']);
         }
     }
     private function DeleteCategorie()
@@ -82,6 +75,7 @@ class Kategorie_Controller extends CI_Controller
         {
             if(0 == $sqlResult)
               $sqlRemove = $this->Kategorie_model->RemoveConnection($this->input->post("kategories"),$_SESSION['userid']);
+              $sqlChange = $this->Kategorie_model->ChangeTransactions($this->input->post("kategories"),1,$_SESSION['userid']);
             else
                 exit("Kategorie ist ein Standardwert!");
         }

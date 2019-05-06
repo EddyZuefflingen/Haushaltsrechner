@@ -35,7 +35,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     echo "TODO: Neu zu ordnen von Ausgaben/einnahmen zu Keine Angaben wenn Kategorie gelöscht / Umbenannt wurde.";
     echo "<br>";
     echo "TODO: Kategorie Umbennen";
-	// art des Buttons form_submit (Button ID/Name, Button Value);
+    
 	?>
     </div>
 </body>

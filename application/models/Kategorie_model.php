@@ -47,4 +47,9 @@ class Kategorie_model extends CI_Model
         $this->load->database();
         $query = $this->db->query("DELETE * FROM KontoCat WHERE kategorie_ID = '" . $CatID . "' AND Recnum_ID = '" . $RecnumID ."'");
     }
+    public function ChangeTransactions($oldID,$newID,$RecnumID)
+    {
+        $this->load->database();
+        $query = $this->db->query("UPDATE transactions SET kategorie_ID = '" . $newID . "' WHERE Rechnum_ID == '" . $RecnumID ."' AND kategorie_ID == '" . $oldID . "'");
+    }
 }
