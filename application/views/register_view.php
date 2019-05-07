@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</head>
 	<body>
 		<div id="container">
-            <h1>Register</h1>
+            <h1>Registration</h1>
 			<?php
 				$oldUsername = "";
 				 if (isset($username))
