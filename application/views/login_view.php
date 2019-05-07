@@ -45,23 +45,23 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 $LoginButtonSubmit = array(
                     'name' => 'Login',
                     'id' => 'Login',
-                    'value' => "Login",
+                    'value' => "Einloggen",
                     'class' => 'BtnControl',
                 );
 
                 $RegisterButtonSubmit = array(
                     'name' => 'Register',
                     'id' => 'Register',
-                    'value' => "Register",
+                    'value' => "Registrieren",
                     'class' => 'BtnControl'
                 );
 
-                echo form_label("Username: ", "Username", $UsernameLabelSettings).form_input($UsernameFormSettings);
+                echo form_label("Benutzername: ", "Username", $UsernameLabelSettings).form_input($UsernameFormSettings);
                 echo "<br><br>";
                 echo form_label("Password: ", "Password", $PasswordLabelSettings).form_password($PasswordFormSettings);
                 echo "<br><br>";
 
-                echo form_checkbox($KeepUsernameCheckboxSettings).form_label("Username merken ?", "KeepUsername");
+                echo form_checkbox($KeepUsernameCheckboxSettings).form_label("Benutzername merken ?", "KeepUsername");
                 echo "<br><br>";
                 echo form_submit($LoginButtonSubmit);
                 echo form_submit($RegisterButtonSubmit);

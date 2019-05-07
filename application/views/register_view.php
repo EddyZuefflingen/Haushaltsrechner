@@ -46,15 +46,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					'value'       => $oldEmail
 				);						
 
-				echo "Username: ".form_input($UsernameFormSettings);
+				echo "Benutzername: ".form_input($UsernameFormSettings);
 				echo "<br><br>";
 				echo "Password: ".form_password($PasswordFormSettings);
 				echo "<br><br>";
-				echo "Email: ".form_input($EmailFormSettings);
+				echo "Emailadresse: ".form_input($EmailFormSettings);
 				echo "<br><br>";			
 
 				echo form_button('Login','Login', array('onclick' => 'location.href=\'' . base_url() . 'index.php/Login_Controller\';', 'class' => 'BtnControl'));
-				echo form_submit('Register', 'Register', array('class' => 'BtnControl'));
+				echo form_submit('Register', 'Registrieren', array('class' => 'BtnControl'));
 				echo form_close();
 			?>
 		</div>
