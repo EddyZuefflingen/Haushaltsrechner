@@ -7,22 +7,22 @@ class Input_Controller extends CI_Controller
     {
         $this->load->model("Input_model");
         session_start();
-     /*    $data = array(
-            "kategories" => $this->Input_model->loadCategories()
-            Kategorien für die Kategorie Bearbeitung laden.
-        );  */
+        $data=$this->GetInputControlValues();
         $this->load->helper('url');
         $this->load->view("input_view", $data); 
     }
 
+    //public function load
 
     public function GetInputControlValues()
     {
         $this->load->model("Input_model");
         $this->load->model("Login_model");
+        $sqlResult = $this->Input_model->getKontostand($_SESSION['userid']);
         $data = array(
             "kategories" => $this->Input_model->loadCategories(),
             "transactionKategories" => $this->Login_model->loadTransactionKategories($_SESSION['userid']),
+            "kontostand" => $sqlResult->Kontostand,
             //Hier neue Array Werte für die Input view zum füllen der Controls einfügen !
         ); 
         
@@ -33,10 +33,6 @@ class Input_Controller extends CI_Controller
 	{
         $this->load->model("Input_model");
         session_start();
-     /*   $data = array(
-            "kategories" => $this->Input_model->loadCategories()
-            Kategorien für die Kategorie Bearbeitung laden.
-        ); */
         $this->load->helper('url');
         if ($this->input->post("save") !== null){
             $this->TransactionInput();

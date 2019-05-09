@@ -29,6 +29,13 @@ Class Input_model extends CI_Model
     $this->load->database();
     $query = $this->db->query("INSERT INTO transactions(Recnum_ID,Menge,kategorie_ID,Datum) Values('" . $Recnum_ID . "','" . $amount . "','" . $categorie . "','" . $date . "')");
   }
+  public function getKontostand($Recnum_ID)
+  {
+    $this->load->database();
+    $query = $this->db->query("SELECT SUM(Menge) as Kontostand FROM transactions WHERE Recnum_ID = '" . $Recnum_ID . "'");
+    $RowResult = $query->row();
+    return $RowResult;
+  }
 
 }
 ?>

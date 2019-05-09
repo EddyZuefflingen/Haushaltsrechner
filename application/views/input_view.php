@@ -41,6 +41,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	echo form_submit("save","Eintrag Speichern!");
 	echo form_submit("KategorieDetails","Kategorie Bearbeiten!");
 	// art des Buttons form_submit (Button ID/Name, Button Value);
+	echo "<br><br>";
+	echo "Kontostand: " .$kontostand."€";
+	echo "<br><br>";
 	?>
 	<table>
 		<tr>
