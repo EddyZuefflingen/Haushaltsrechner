@@ -11,6 +11,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <div id="container">
             <h1>Login</h1>
             <?php
+				$verifiedUsername = "";
+                if (isset($verfUsername))
+                    $verifiedUsername = $verfUsername;
+                    
                 $this->load->helper('form');
                 echo form_open('Login_Controller/LoginRegisterSwitch');
 
@@ -23,7 +27,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     'name' => 'Username',
                     'id' => 'Username',
                     'maxlength' => '100',
-                    'class' => 'InputControl'
+                    'class' => 'InputControl',
+                    'value' => $verifiedUsername
                 );
 
                 $PasswordFormSettings = array(

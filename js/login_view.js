@@ -3,8 +3,11 @@ window.onload  = function ()
     var CookieValue = getCookie("KeepUsername");
     if (CookieValue != "")
     {
-        document.getElementById("Username").value = getCookie("KeepUsername");
-        document.getElementById("KeepUsername").checked = true;
+        if(document.getElementById("Username").value == "")
+        {
+            document.getElementById("Username").value = getCookie("KeepUsername");
+            document.getElementById("KeepUsername").checked = true;
+        }
     } 
 }
 

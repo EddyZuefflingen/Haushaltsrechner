@@ -51,4 +51,10 @@ class Login_model extends CI_Model
         }
     }
 
+    public function GetUsernameFromEmail($email)
+    {
+        $this->load->database();
+        $query = $this->db->query("SELECT username FROM accounts WHERE email = '" . $email . "'");
+        return $query->row()->username;
+    }
 }
