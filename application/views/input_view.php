@@ -39,11 +39,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	echo "<br><br>";
 
 	echo form_submit("save","Eintrag Speichern!");
-	echo form_submit("show","Daten Anzeigen!");
-	echo "<br><br><br><br>";
 	echo form_submit("KategorieDetails","Kategorie Bearbeiten!");
 	// art des Buttons form_submit (Button ID/Name, Button Value);
 	?>
+	<table>
+		<tr>
+			<th>Kategorie</th>
+			<th>Menge</th>
+			<th>Datum</th>
+		</tr>
+		<?php
+		foreach($transactionKategories as $row)
+		{
+			echo "<tr>";
+				echo "<td>";
+					echo $row["kate"];
+				echo "</td>";
+				echo "<td>";
+					echo $row["menge"];
+				echo "</td>";
+				echo "<td>";
+					echo $row["datum"];
+				echo "</td>";
+			echo "</tr>";
+		}
+		?>
+		</table>
 	</div>
 </body>
 </html>

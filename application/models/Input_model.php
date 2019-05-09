@@ -29,15 +29,6 @@ Class Input_model extends CI_Model
     $this->load->database();
     $query = $this->db->query("INSERT INTO transactions(Recnum_ID,Menge,kategorie_ID,Datum) Values('" . $Recnum_ID . "','" . $amount . "','" . $categorie . "','" . $date . "')");
   }
-  public function loadTransactions($Recnum_ID)
-  {
-    $this->load->database();
-    $query = $this->db->query("SELECT t.Menge,t.Datum,k.Kategorie FROM transactions as t INNER JOIN kategorie as k on k.kategorie_ID = t.kategorie_ID WHERE t.Recnum_ID = '" . $_SESSION['userid'] ."'");
-    if($query->row() == null) return;
-     else 
-     {
-       return $query;
-      }
-  }
+
 }
 ?>

@@ -3,6 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Login_Controller extends CI_Controller
 {
+
     public function index()
     {
         $this->load->helper('url');
@@ -19,10 +20,13 @@ class Login_Controller extends CI_Controller
     public function GetInputControlValues()
     {
         $this->load->model("Input_model");
+        $this->load->model("Login_model");
         $data = array(
             "kategories" => $this->Input_model->loadCategories(),
-            //Hier neue Array Werte für die Input View zum füllen der Controls einfügen !
+            "transactionKategories" => $this->Login_model->loadTransactionKategories($_SESSION['userid']),
+            //Hier neue Array Werte für die Input view zum füllen der Controls einfügen !
         ); 
+        
         return $data;
     }
 
@@ -49,27 +53,27 @@ class Login_Controller extends CI_Controller
     {
         $this->load->model("Login_model");
         $sqlResult = $this->Login_model->GetAccountData($this->input->post("Username"));
-        if ($sqlResult !== null and openssl_decrypt($sqlResult->password, "AES-128-CBC", "UltraSavePassword", 0, "0244545367373570") == $this->input->post("Password"))
+        if (null !== $sqlResult and openssl_decrypt($sqlResult->password, "AES-128-CBC", "UltraSavePassword", 0, "0244545367373570") == $this->input->post("Password"))
         {
-            if ($sqlResult->verified == 0)
-            {
-                echo '<script type="text/javascript"> window.alert("Account nicht freigeschaltet!") </script>';
-                $this->load->helper('url');
-                $this->load->view("login_view");
-            }
+            if (0 == $sqlResult->verified)
+                exit("Account noch nicht freigeschaltet !");
             else
-            {
                 session_start();
                 $_SESSION['userid'] = $sqlResult->recnum;
                 $this->load->helper('url');
-                $this->load->view("input_view",$this->GetInputControlValues());
-            }
+                $data = $this->GetInputControlValues();
+                $this->load->view("input_view",$data);
         }
         else
         {
-            echo '<script type="text/javascript"> window.alert("Benutzername oder Password ungültig!") </script>';
+            echo '<script type="text/javascript"> window.alert("Username oder Password fehlerhaft!") </script>';
+
             $this->load->helper('url');
             $this->load->view("login_view");
         }
+    }
+
+    public function test() {
+        echo "test";
     }
 }

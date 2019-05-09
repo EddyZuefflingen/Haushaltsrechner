@@ -7,21 +7,25 @@ class Input_Controller extends CI_Controller
     {
         $this->load->model("Input_model");
         session_start();
-        $data = array(
+     /*    $data = array(
             "kategories" => $this->Input_model->loadCategories()
-            //Kategorien für die Kategorie Bearbeitung laden.
-        ); 
+            Kategorien für die Kategorie Bearbeitung laden.
+        );  */
         $this->load->helper('url');
         $this->load->view("input_view", $data); 
     }
 
-    public function GetCategories()
+
+    public function GetInputControlValues()
     {
         $this->load->model("Input_model");
+        $this->load->model("Login_model");
         $data = array(
-            "kategories" => $this->Input_model->loadCategories()
-            //Kategorien für die Kategorie Bearbeitung laden.
+            "kategories" => $this->Input_model->loadCategories(),
+            "transactionKategories" => $this->Login_model->loadTransactionKategories($_SESSION['userid']),
+            //Hier neue Array Werte für die Input view zum füllen der Controls einfügen !
         ); 
+        
         return $data;
     }
 
@@ -29,21 +33,18 @@ class Input_Controller extends CI_Controller
 	{
         $this->load->model("Input_model");
         session_start();
-        $data = array(
+     /*   $data = array(
             "kategories" => $this->Input_model->loadCategories()
-            //Kategorien für die Kategorie Bearbeitung laden.
-        ); 
+            Kategorien für die Kategorie Bearbeitung laden.
+        ); */
         $this->load->helper('url');
         if ($this->input->post("save") !== null){
             $this->TransactionInput();
-        }
-
-        if ($this->input->post("show") !== null){
-            $this->getTransactions();
+            $this->load->view("input_view",$this->GetInputControlValues());
         }
 
         if ($this->input->post("KategorieDetails") !== null){
-            $this->load->view("kategorie_view",$this->GetCategories());
+            $this->load->view("kategorie_view",$this->GetInputControlValues());
         }
 
     }
@@ -52,6 +53,7 @@ class Input_Controller extends CI_Controller
     {
         $this->load->model("Input_model");
         $sqlResult = $this->Input_model->loadTransactions($_SESSION['userid']);
+        echo $sqlResult;
     }
 
     public function TransactionInput()

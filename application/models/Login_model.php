@@ -30,4 +30,25 @@ class Login_model extends CI_Model
         $RowResult = $query->row();
         return $RowResult;
     }
+
+    public function loadTransactionKategories($Recnum_ID)
+    {
+      $this->load->database();
+      $query = $this->db->query("SELECT t.Menge,t.Datum,k.Kategorie FROM transactions as t INNER JOIN kategorie as k on k.kategorie_ID = t.kategorie_ID WHERE t.Recnum_ID = '" . $_SESSION['userid'] ."'");
+      if($query->row() == null) return;
+       else 
+       {
+        $results = array();
+        $id = 0;
+         foreach($query->result() as $row)
+         {
+            $results[$id]["kate"] = $row->Kategorie;
+            $results[$id]["menge"] = $row->Menge;
+            $results[$id]["datum"] = $row->Datum;
+            $id++;
+         }
+         return $results;
+        }
+    }
+
 }
