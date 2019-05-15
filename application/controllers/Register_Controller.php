@@ -44,6 +44,12 @@ class Register_Controller extends CI_Controller {
 		 $hash = md5(rand(0,1000)); // Generate random 32 character hash and assign it to a local variable.
 		 $this->CreateAccount($this->input->post("username"), $this->input->post("password"), $this->input->post("email"), $hash);
 		 $this->SendEmailVerification($this->input->post("email"), $hash);
+
+		 echo '<script type="text/javascript"> window.alert("Registrierung erfolgreich. \r\nBitte verifizieren!") </script>';
+
+		 $this->load->helper('url');
+		 $this->load->helper('form');
+		 $this->load->view('login_view');
 	}
 
 	public function sendError($message)
