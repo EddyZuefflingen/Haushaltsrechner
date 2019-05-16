@@ -43,13 +43,12 @@ class Kategorie_model extends CI_Model
     }
     public function RemoveConnection($CatID,$RecnumID)
     {
-        session_start();
         $this->load->database();
-        $query = $this->db->query("DELETE * FROM KontoCat WHERE kategorie_ID = '" . $CatID . "' AND Recnum_ID = '" . $RecnumID ."'");
+        $query = $this->db->query("DELETE FROM KontoCat WHERE kategorie_ID = '" . $CatID . "' AND Recnum_ID = '" . $RecnumID ."'");
     }
     public function ChangeTransactions($oldID,$newID,$RecnumID)
     {
         $this->load->database();
-        $query = $this->db->query("UPDATE transactions SET kategorie_ID = '" . $newID . "' WHERE Rechnum_ID == '" . $RecnumID ."' AND kategorie_ID == '" . $oldID . "'");
+        $query = $this->db->query("UPDATE transactions SET kategorie_ID = '" . $newID . "' WHERE Recnum_ID = '" . $RecnumID ."' AND kategorie_ID = '" . $oldID . "'");
     }
 }

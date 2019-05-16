@@ -5,24 +5,44 @@ class Kategorie_Controller extends CI_Controller
 {
     public function index()
     {
-        $this->load->view("kategorie_view"); 
+        $this->load->helper('url');
+        $this->load->view("kategorie_view", $data); 
+    }
+
+    public function GetInputControlValues()
+    {
+        $this->load->model("Input_model");
+        $this->load->model("Login_model");
+        $sqlResult = $this->Input_model->getKontostand($_SESSION['userid']);
+        $data = array(
+            "kategories" => $this->Input_model->loadCategories(),
+            "transactionKategories" => $this->Login_model->loadTransactionKategories($_SESSION['userid']),
+            "kontostand" => $sqlResult->Kontostand,
+            //Hier neue Array Werte für die Input view zum füllen der Controls einfügen !
+        ); 
         
+        return $data;
     }
 
     public function ButtonSwitch()
 	{
         session_start();
+        $this->load->helper('url');
+        $this->load->model("Input_model");
         if ($this->input->post("add") !== null){
             $this->AddCategorie();
+            $this->load->view("kategorie_view",$this->GetInputControlValues());
         }
 
         if ($this->input->post("rename") !== null){
           $this->RenameCategorie();
+          $this->load->view("kategorie_view",$this->GetInputControlValues());
         }
 
         if ($this->input->post("delete") !== null){
         
             $this->DeleteCategorie();
+            $this->load->view("kategorie_view",$this->GetInputControlValues());
         }
     }
 
@@ -37,7 +57,6 @@ class Kategorie_Controller extends CI_Controller
                 $sqlInsert = $this->Kategorie_model->AddKategorie($this->input->post("KategorieName"));
                 $sqlID = $this->Kategorie_model->getKategorieID($this->input->post("KategorieName"));
                 $sqlAdd = $this->Kategorie_model->AddConnection($sqlID,$_SESSION['userid']);
-                exit("Kategorie erfolgreich hinzugefügt.");
             }
             else
             {
@@ -46,7 +65,6 @@ class Kategorie_Controller extends CI_Controller
                 if(0 == $sqlCatConnection)
                 {
                     $sqlAdd = $this->Kategorie_model->AddConnection($sqlID,$_SESSION['userid']);
-                    exit("Kategorie erfolgreich hinzugefügt.");
                 }
                 else
                 {
@@ -64,6 +82,7 @@ class Kategorie_Controller extends CI_Controller
         $this->AddCategorie();
         {
             $sqlID = $this->Kategorie_model->getKategorieID($this->input->post("KategorieName"));
+            $sqlRemove = $this->Kategorie_model->RemoveConnection($this->input->post("kategories"),$_SESSION['userid']);
             $sqlChange = $this->Kategorie_model->ChangeTransactions($this->input->post("kategories"),$sqlID,$_SESSION['userid']);
         }
     }
