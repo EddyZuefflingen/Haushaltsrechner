@@ -15,9 +15,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</div>
 	<div id="container">
         <?php
-            echo "Sparziel erfolgreich angelegt: <br>";
-            echo $sparziel . "<br>";
-            echo $betrag . "<br>";
+            if($error == null) {
+                echo "Sparziel erfolgreich angelegt: <br>";
+                echo $sparziel . "<br>";
+                echo $betrag . "<br>";
+            } else {
+                echo "Sparziel nicht angelegt, mindestens ein Feld war leer. <br>";
+            }
         ?>
         <a href="<?php echo base_url(); ?>index.php/Sparziel_Controller">Zurück</a>
 	</div>
