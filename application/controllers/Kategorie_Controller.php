@@ -74,8 +74,10 @@ class Kategorie_Controller extends CI_Controller
         if ($sqlResult >= 0)
         {
             if(0 == $sqlResult)
+            {
               $sqlRemove = $this->Kategorie_model->RemoveConnection($this->input->post("kategories"),$_SESSION['userid']);
               $sqlChange = $this->Kategorie_model->ChangeTransactions($this->input->post("kategories"),1,$_SESSION['userid']);
+            }
             else
                 exit("Kategorie ist ein Standardwert!");
         }
