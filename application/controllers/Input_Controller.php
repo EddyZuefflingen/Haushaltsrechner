@@ -56,10 +56,12 @@ class Input_Controller extends CI_Controller
     {
         $this->load->helper('date');
         $this->load->model("Input_model");
+        if($this->input->post("amount") != 0){
         if($this->input->post("auswahl") == "ausgaben")
             $sqlResult = $this->Input_model->doNegativeTransaction($this->input->post("kategories"),$this->input->post("amount"),"-",mdate("%Y-%m-%d %H:%i:%s"),$_SESSION['userid']);
         else
             $sqlResult = $this->Input_model->doPositiveTransaction($this->input->post("kategories"),$this->input->post("amount"),mdate("%Y-%m-%d %H:%i:%s"),$_SESSION['userid']);
+        }
     }
 
 }

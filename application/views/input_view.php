@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	$amount = array(
 	'name' => 'amount',
 	'id' => 'amount',
-	'value' => '200',
+	'value' => '0',
 	'maxlength' => '100',
 	'size' => '50',
 	'style' => 'width:50%'
@@ -52,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<th>Datum</th>
 		</tr>
 		<?php
+		if(max(array('count',$transactionKategories)) > 0){
 		foreach($transactionKategories as $row)
 		{
 			echo "<tr>";
@@ -66,6 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				echo "</td>";
 			echo "</tr>";
 		}
+	}
 		?>
 		</table>
 	</div>
