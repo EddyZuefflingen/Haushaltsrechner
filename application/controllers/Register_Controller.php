@@ -76,13 +76,14 @@ class Register_Controller extends CI_Controller {
 	{
 		//https://www.homeconstructor.net/de/email-versand-unter-xampp-einrichten
 
+		$this->load->helper('url');
 		$this->load->library("email");
 		$this->email->from("noreply@localhost.com", "Haushaltsrechner");
 		$this->email->to($email);
 		
 		$this->email->subject("Haushaltsrechner Verification");
 		$this->email->message("Please click this link to verify your account:\r\n
-		http://localhost/Haushaltsrechner/index.php/Verification_Controller/verify?email=".$email."&hash=".$hash);
+		".base_url()."index.php/Verification_Controller/verify?email=".$email."&hash=".$hash);
 		
 		$this->email->send();
 	}
