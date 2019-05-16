@@ -7,8 +7,13 @@ class Input_Controller extends CI_Controller
     {
         $this->load->model("Input_model");
         session_start();
-        $data=$this->GetInputControlValues();
         $this->load->helper('url');
+		if (!isset($_SESSION['userid']))
+		{	
+			header('Location: '. base_url() .'index.php/');
+			die;
+		}
+        $data=$this->GetInputControlValues();
         $this->load->view("input_view", $data); 
     }
 
@@ -34,6 +39,11 @@ class Input_Controller extends CI_Controller
         $this->load->model("Input_model");
         session_start();
         $this->load->helper('url');
+        if (!isset($_SESSION['userid']))
+		{	
+			header('Location: '. base_url() .'index.php/');
+			die;
+		}
         if ($this->input->post("save") !== null){
             $this->TransactionInput();
             $this->load->view("input_view",$this->GetInputControlValues());
