@@ -5,7 +5,13 @@ class Kategorie_Controller extends CI_Controller
 {
     public function index()
     {
+        session_start();
         $this->load->helper('url');
+		if (!isset($_SESSION['userid']))
+		{	
+			header('Location: '. base_url() .'index.php/');
+			die;
+		}
         $this->load->view("kategorie_view", $data); 
     }
 
@@ -28,6 +34,11 @@ class Kategorie_Controller extends CI_Controller
 	{
         session_start();
         $this->load->helper('url');
+        if (!isset($_SESSION['userid']))
+		{	
+			header('Location: '. base_url() .'index.php/');
+			die;
+		}
         $this->load->model("Input_model");
         if ($this->input->post("add") !== null){
             $this->AddCategorie();
