@@ -34,6 +34,7 @@ class Login_Controller extends CI_Controller
 
     public function LoginRegisterSwitch()
     {
+        $this->load->helper('url');
         if ($this->input->post("Login") !== null)
         {
             $this->load->helper('cookie');
@@ -45,14 +46,12 @@ class Login_Controller extends CI_Controller
             $this->LoginValidation();
         }
         else if ($this->input->post("Register") !== null)
-        {
-            $this->load->helper('url');
             $this->load->view("register_view");
-        }
     }
 
     private function LoginValidation()
     {
+        $this->load->helper('url');
         $this->load->model("Login_model");
         $sqlResult = $this->Login_model->GetAccountData($this->input->post("Username"));
         if (null !== $sqlResult and openssl_decrypt($sqlResult->password, "AES-128-CBC", "UltraSavePassword", 0, "0244545367373570") == $this->input->post("Password"))
@@ -62,15 +61,12 @@ class Login_Controller extends CI_Controller
             else
                 session_start();
                 $_SESSION['userid'] = $sqlResult->recnum;
-                $this->load->helper('url');
                 $data = $this->GetInputControlValues();
                 $this->load->view("input_view",$data);
         }
         else
         {
             echo '<script type="text/javascript"> window.alert("Username oder Password fehlerhaft!") </script>';
-
-            $this->load->helper('url');
             $this->load->view("login_view");
         }
     }
